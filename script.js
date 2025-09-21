@@ -103,3 +103,8 @@ for (let btn of callBtn) {
         }
     });
 }   
+
+clearBtn.addEventListener("click", function() {
+    callHistoryContainer.innerHTML = "";
+    transactionData.length = 0; 
+});
