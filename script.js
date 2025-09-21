@@ -38,7 +38,7 @@ for (let i = 0; i < copyButton.length; i++) {
 }
 
 
-// coin Area
+// call Area
 
 const callButtons = document.getElementsByClassName("call-button");
 
@@ -65,7 +65,6 @@ for (let i = 0; i < callButtons.length; i++) {
         const serviceName = card.querySelector("h3").innerText;
         const serviceNumber = card.querySelector(".copy-text").innerText;
 
-        // Alert with <p> and <h2>
         const pText = card.querySelector("h3").innerText;
         const h2Text = card.querySelector("h2").innerText;
         alert(`Calling National Emergency:${pText}${h2Text}`);
@@ -89,20 +88,22 @@ for (let btn of callBtn) {
 
         const data = { 
             name: serviceName,
-            number: serviceNumber,
+          number: serviceNumber,
             date: new Date().toLocaleTimeString() 
-        };
+          }
+          ;
 
         transactionData.push(data);
 
  
         callHistoryContainer.innerHTML = "";
-        for (const tx of transactionData) {
+     for (const tx of transactionData) {
             const entry = document.createElement("div");
             entry.innerHTML = `
-                <div class="call-entry flex items-center justify-between p-4 border-2 border-gray-300 rounded-lg mb-4">
+                <div class="call-entry flex items-center justify-between p-4 border-2
+                 border-gray-300 rounded-lg mb-4">
                     <div>
-                        <h2>${tx.name}</h2>
+                   <h2>${tx.name}</h2>
                         <p>${tx.number}</p>
                     </div>
                     <p>${tx.date}</p>
@@ -112,8 +113,8 @@ for (let btn of callBtn) {
         }
     });
 }   
-
+//clear history
 clearBtn.addEventListener("click", function() {
-    callHistoryContainer.innerHTML = "";
+      callHistoryContainer.innerHTML = "";
     transactionData.length = 0; 
 });
