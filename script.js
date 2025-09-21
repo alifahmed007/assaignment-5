@@ -61,6 +61,15 @@ for (let i = 0; i < callButtons.length; i++) {
         } else {
             alert("You do not have enough coins. 20 coins are required to make a call.");
         }
+             const card = this.closest(".bg-white");
+        const serviceName = card.querySelector("h3").innerText;
+        const serviceNumber = card.querySelector(".copy-text").innerText;
+
+        // Alert with <p> and <h2>
+        const pText = card.querySelector("h3").innerText;
+        const h2Text = card.querySelector("h2").innerText;
+        alert(`Calling National Emergency:${pText}${h2Text}`);
+
     });
 }
 
