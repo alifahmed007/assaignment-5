@@ -63,3 +63,43 @@ for (let i = 0; i < callButtons.length; i++) {
         }
     });
 }
+
+const callBtn = document.getElementsByClassName("call-button");
+const callHistoryContainer = document.getElementById("call-history");
+const clearBtn = document.getElementById("clear-history")
+const transactionData = [];
+
+for (let btn of callBtn) {
+    btn.addEventListener("click", function(event) {
+        event.preventDefault();
+
+
+        const card = this.closest(".bg-white");
+        const serviceName = card.querySelector("h3").innerText;
+        const serviceNumber = card.querySelector(".copy-text").innerText;
+
+        const data = { 
+            name: serviceName,
+            number: serviceNumber,
+            date: new Date().toLocaleTimeString() 
+        };
+
+        transactionData.push(data);
+
+ 
+        callHistoryContainer.innerHTML = "";
+        for (const tx of transactionData) {
+            const entry = document.createElement("div");
+            entry.innerHTML = `
+                <div class="call-entry flex items-center justify-between p-4 border-2 border-gray-300 rounded-lg mb-4">
+                    <div>
+                        <h2>${tx.name}</h2>
+                        <p>${tx.number}</p>
+                    </div>
+                    <p>${tx.date}</p>
+                </div>
+            `;
+            callHistoryContainer.appendChild(entry);
+        }
+    });
+}   
