@@ -37,3 +37,29 @@ for (let i = 0; i < copyButton.length; i++) {
     });
 }
 
+
+// coin Area
+
+const callButtons = document.getElementsByClassName("call-button");
+
+for (let i = 0; i < callButtons.length; i++) {
+    callButtons[i].addEventListener("click", function(event) {
+        event.preventDefault();
+
+        const coinCountElement = document.getElementById("coin-count");
+        let coinCount = parseInt(coinCountElement.innerText);
+
+        if (coinCount >= 20) {
+            const totalCoin = coinCount - 20;
+            coinCountElement.innerText = totalCoin;
+
+            
+            if (totalCoin === 0) {
+                alert("Your coins have run out!");
+            }
+
+        } else {
+            alert("You do not have enough coins. 20 coins are required to make a call.");
+        }
+    });
+}
